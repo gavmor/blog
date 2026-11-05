@@ -90,7 +90,7 @@ try {
 
   const indexPath = join(output, 'index.html');
   const index = await readFile(indexPath, 'utf8');
-  await writeFile(indexPath, index.replace('</head>', `${metadata('Gavin Morgan', siteDescription, base, 'website')}\n</head>`));
+  await writeFile(indexPath, index.replace('<body>', '<body class="blog-index">').replace('</head>', `${metadata('Gavin Morgan', siteDescription, base, 'website')}\n</head>`));
 
   const template = await readFile(join(root, 'template.html'), 'utf8');
   await mkdir(join(output, 'posts'), { recursive: true });
