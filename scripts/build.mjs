@@ -75,8 +75,8 @@ try {
       throw new Error(`Post needs a unique lowercase hyphenated slug: ${$heading.text()}`);
     }
     slugs.add(slug);
-    const title = $heading.text().trim();
-    const headingHtml = $heading.html();
+    const title = $heading.text().trim().replace(/^\d{4}-\d{2}-\d{2}:\s*/, '');
+    const headingHtml = escapeHtml(title);
     const path = `posts/${slug}.html`;
     const url = new URL(path, base).href;
     posts.push({ title, headingHtml, headingId, body, path, url,
@@ -107,7 +107,8 @@ try {
   const rss = (await readFile(feed, 'utf8')).replace(/<item>[\s\S]*?<\/item>/g, item => {
     const post = posts[itemCount++];
     if (!post || !/<link>[\s\S]*?<\/link>/.test(item)) throw new Error('RSS items do not match post headings.');
-    return item.replace(/<link>[\s\S]*?<\/link>/, `<link>${escapeHtml(post.url)}</link>`);
+    return item.replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(post.title)}</title>`)
+      .replace(/<link>[\s\S]*?<\/link>/, `<link>${escapeHtml(post.url)}</link>`);
   });
   if (itemCount !== posts.length) throw new Error('RSS items do not match post headings.');
   await writeFile(join(output, 'feed.xml'), rss);
