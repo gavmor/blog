@@ -11,6 +11,8 @@ language: en-us
 
 ## 2026-11-04: That's Part of the Game
 
+<!-- slug: 2026-11-04-thats-part-of-the-game -->
+
 On a high-performing team, critique is necessary. But my team is wary of pedantry, and I understand why. We all hate red tape; we need a buffer so we don't end up hating each other.
 
 What if we made critique into a sort of a game? We could try some shared rules that allow people to separate critique from personal criticism, and change them together if they don't help. The point is to make it safe to speak honestly about the work, not to add red tape.
