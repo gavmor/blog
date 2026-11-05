@@ -27,7 +27,7 @@ function metadata(title, description, url, type) {
     `<link rel="canonical" href="${escapeHtml(url)}">`,
     `<meta name="description" content="${escapeHtml(description)}">`,
     `<meta property="og:type" content="${type}">`,
-    `<meta property="og:site_name" content="Gavin More Gavin">`,
+    `<meta property="og:site_name" content="Gavin Morgan">`,
     `<meta property="og:title" content="${escapeHtml(title)}">`,
     `<meta property="og:description" content="${escapeHtml(description)}">`,
     `<meta property="og:url" content="${escapeHtml(url)}">`,
@@ -90,13 +90,13 @@ try {
 
   const indexPath = join(output, 'index.html');
   const index = await readFile(indexPath, 'utf8');
-  await writeFile(indexPath, index.replace('</head>', `${metadata('Gavin More Gavin', siteDescription, base, 'website')}\n</head>`));
+  await writeFile(indexPath, index.replace('</head>', `${metadata('Gavin Morgan', siteDescription, base, 'website')}\n</head>`));
 
   const template = await readFile(join(root, 'template.html'), 'utf8');
   await mkdir(join(output, 'posts'), { recursive: true });
   for (const post of posts) {
     const page = template
-      .replace('{{title}}', escapeHtml(`${post.title} | Gavin More Gavin`))
+      .replace('{{title}}', escapeHtml(`${post.title} | Gavin Morgan`))
       .replace('{{content}}', `<h1 id="${escapeHtml(post.headingId || post.path)}">${post.headingHtml}</h1>${post.body}`)
       .replaceAll('href="./', 'href="../')
       .replace('</head>', `${metadata(post.title, post.description, post.url, 'article')}\n</head>`);

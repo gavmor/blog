@@ -1,8 +1,8 @@
-# Gavin More Gavin
+# Gavin Morgan
 
 <!--
 @marss
-title: Gavin More Gavin
+title: Gavin Morgan
 link: https://www.gavmor.com/blog/
 description: Notes and writing by Gavin Morgan.
 htmlUrl: https://www.gavmor.com/blog/
